@@ -1,0 +1,77 @@
+return {
+  -- ["<leader>"] = {
+  --   ["q"] = { "<cmd>bd<CR>", "Bye Buffer" },
+  --   ["c"] = { "<cmd>bd!<CR>", "Close Buffer" },
+  --   ["n"] = { "<cmd>tabnew<cr>", "New Buffer" },
+  --   ["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
+  --   ["<cr>"] = { '<esc>/<++><cr>"_c4l', "Next Template" },
+  --   ["/"] = { "<cmd>lua require('Comment.api').call('toggle_current_linewise_op')<CR>g@$", "Comment" },
+  --   ["."] = { "<cmd>ColorizerToggle<cr>", "Colorizer" },
+  --   ["<Space>"] = { "za", "Fold/UnFold" },
+  --   h = {
+  --     name = "Hop",
+  --     c = { "<cmd>HopChar1<cr>", "Character" },
+  --     C = { "<cmd>HopChar2<cr>", "2 Characters" },
+  --     l = { "<cmd>HopLine<cr>", "Line" },
+  --     p = { "<cmd>HopPattern<cr>", "Pattern" },
+  --     w = { "<cmd>HopWord<cr>", "Word" },
+  --   },
+  --
+  --   f = {
+  --     name = "Telescope",
+  --     ["?"] = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+  --     ["'"] = { "<cmd>Telescope marks<cr>", "Marks" },
+  --     b = { "<cmd>Telescope file_browser hidden=true<cr>", "Explorer" },
+  --     a = { "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", "All Files" },
+  --     o = { "<cmd>Telescope oldfiles<cr>", "History" },
+  --     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+  --     m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+  --     M = { "<cmd>Telescope media_files<cr>", "Media" },
+  --     n = { "<cmd>Telescope notify<cr>", "Notifications" },
+  --     p = { "<cmd>Telescope project<cr>", "Projects" },
+  --     r = { "<cmd>Telescope registers<cr>", "Registers" },
+  --     t = { "<cmd>Telescope colorscheme<cr>", "Themes" },
+  --     g = { "<cmd>Telescope live_grep<cr>", "Words" },
+  --     -- B = { "<cmd>Telescope bibtex<cr>", "BibTeX" },
+  --     -- c = { "<cmd>Telescope commands<cr>", "Commands" },
+  --     -- o = { nil },
+  --   },
+  --   g = {
+  --     name = "Telescope Git",
+  --     m = { "<cmd>Telescope git_commits<CR>", "Git Commits" },
+  --     t = { "<cmd>Telescope git_status<CR>", "Git Status" },
+  --   },
+
+    -- d = {
+    --   name = "Document",
+    --   -- n = { "<cmd>enew<cr>", "New File" },
+    --   s = { "<cmd>setlocal spell!<cr>", "Toggle Spelling" },
+    --   t = { "<cmd>TableModeToggle<cr>", "Toggle Table Mode" },
+    --   p = { "<cmd>setlocal paste!<cr>", "Toggle Paste" },
+    --   -- b = { "<cmd>read !getbib -c<cr>", "Get Bib" },
+    --   -- c = { vim_opt_toggle("conceallevel", 2, 0, "Conceal"), "Toggle Conceal" },
+    --   -- w = { vim_opt_toggle("wrap", true, false, "Soft Wrap"), "Toggle Soft Wrapping" },
+    --   -- W = { vim_opt_toggle("textwidth", 80, 0, "Hard Wrap"), "Toggle Hard Wrapping" },
+    --   -- m = { "<cmd>Glow<cr>", "Preview Markdown" },
+    --   -- M = {
+    --   --   function()
+    --   --     require("nabla").popup()
+    --   --   end,
+    --   --   "Preview Math",
+    --   -- },
+    -- },
+  -- },
+
+  -- ["]"] = {
+  --   f = "Next function start",
+  --   x = "Next class start",
+  --   F = "Next function end",
+  --   X = "Next class end",
+  -- },
+  -- ["["] = {
+  --   f = "Previous function start",
+  --   x = "Previous class start",
+  --   F = "Previous function end",
+  --   X = "Previous class end",
+  -- },
+}
