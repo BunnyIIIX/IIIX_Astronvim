@@ -5,15 +5,22 @@ return {
   ["max397574/better-escape.nvim"] = { disable = true },
   ["numToStr/Comment.nvim"] = { opt = false },
 
-  --=> Code Easily
-  ["machakann/vim-sandwich"] = {},
-  -- Highlight, navigate, and operate on sets of matching text
-  ["andymass/vim-matchup"] = {
-    after = "nvim-treesitter",
+  ["nvim-telescope/telescope.nvim"] = {
+    cmd = "Telescope",
+    module = "telescope",
+    config = function()
+      require("user.plugins.telescope")
+    end,
   },
 
+  --=> Code Easily
+  { "machakann/vim-sandwich" },
+  -- Highlight, navigate, and operate on sets of matching text
+  { "andymass/vim-matchup", after = "nvim-treesitter" },
+
   -- Easily Create Table
-  ["dhruvasagar/vim-table-mode"] = {
+  {
+    "dhruvasagar/vim-table-mode",
     cmd = "TableModeToggle",
     setup = function()
       vim.g.table_mode_corner = "|"
@@ -23,19 +30,29 @@ return {
   -- ["tpope/vim-repeat"] = {},
 
   --=> Cmp
-  ["hrsh7th/cmp-calc"] = {
+  {
+    "hrsh7th/cmp-calc",
     after = "nvim-cmp",
     config = function()
       require("core.utils").add_user_cmp_source "calc"
     end,
   },
-  ["hrsh7th/cmp-emoji"] = {
+  {
+    "hrsh7th/cmp-emoji",
     after = "nvim-cmp",
     config = function()
-      astronvim.add_user_cmp_source "emoji"
+      require("core.utils").add_user_cmp_source "emoji"
     end,
   },
-  -- ["hrsh7th/cmp-cmdline"] = {},
+  {
+    "hrsh7th/cmp-cmdline",
+    after = "nvim-cmp",
+    config = function()
+      require "user.plugins.cmdline"
+      require("core.utils").add_user_cmp_source "cmdline"
+    end,
+  },
+
   -- ["jc-doyle/cmp-pandoc-references"] = {
   --   after = "nvim-cmp",
   --   config = function()
@@ -50,13 +67,11 @@ return {
   -- },
 
   --=> Lsp
-  ["nanotee/sqls.nvim"] = {
-    module = "sqls",
-    after = "nvim-lspconfig",
-  },
+  { "nanotee/sqls.nvim", module = "sqls", after = "nvim-lspconfig" },
 
   --=> Jumper
-  ["phaazon/hop.nvim"] = {
+  {
+    "phaazon/hop.nvim",
     branch = "v1",
     cmd = {
       "HopChar1CurrentLine",
@@ -71,11 +86,12 @@ return {
   -- ["ggandor/lightspeed.nvim"] = {},
 
   --=> Syntax
-  ["nvim-treesitter/nvim-treesitter-textobjects"] = { after = "nvim-treesitter" },
+  { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
   -- ["ziontee113/syntax-tree-surfer"] = { module = "syntax-tree-surfer" },
 
   --=> Telescope
-  ["nvim-telescope/telescope-file-browser.nvim"] = {
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
     after = "telescope.nvim",
     module = "telescope._extensions.file_browser",
     config = function()
@@ -83,7 +99,8 @@ return {
     end,
   },
 
-  ["nvim-telescope/telescope-hop.nvim"] = {
+  {
+    "nvim-telescope/telescope-hop.nvim",
     after = "telescope.nvim",
     module = "telescope._extensions.hop",
     config = function()
@@ -91,7 +108,8 @@ return {
     end,
   },
 
-  ["nvim-telescope/telescope-project.nvim"] = {
+  {
+    "nvim-telescope/telescope-project.nvim",
     after = "telescope.nvim",
     module = "telescope._extensions.project",
     config = function()
@@ -99,7 +117,8 @@ return {
     end,
   },
 
-  ["benfowler/telescope-luasnip.nvim"] = {
+  {
+    "benfowler/telescope-luasnip.nvim",
     after = "telescope.nvim",
     module = "telescope._extensions.luasnip",
     config = function()
@@ -144,7 +163,8 @@ return {
   -- },
 
   --=> Colorscheme
-  ["rose-pine/neovim"] = {
+  {
+    "rose-pine/neovim",
     as = "rose-pine",
     config = function()
       vim.g.rose_pine_variant = "moon"
@@ -152,21 +172,24 @@ return {
       -- vim.cmd "colorscheme rose-pine"
     end,
   },
-  ["EdenEast/nightfox.nvim"] = {
+  {
+    "EdenEast/nightfox.nvim",
     config = function()
       require("nightfox").setup(require "user.plugins.nightfox")
     end,
   },
 
   --=> UI
-  ["ellisonleao/glow.nvim"] = {
+  {
+    "ellisonleao/glow.nvim",
     cmd = "Glow",
     module = "glow",
     setup = function()
       vim.g.glow_border = "rounded"
     end,
   },
-  ["folke/zen-mode.nvim"] = {
+  {
+    "folke/zen-mode.nvim",
     cmd = "ZenMode",
     module = "zen-mode",
     config = function()
@@ -182,8 +205,8 @@ return {
       -- require("user.theme.sacr3d-moon")
     end,
     config = function()
-      require("user.theme.sacr3d-moon")
-    end
+      require "user.theme.sacr3d-moon"
+    end,
   },
 
   -- -- Collection of minimal, independent, and fast Lua modules
@@ -211,7 +234,8 @@ return {
   -- },
 
   --=> Note/Wiki
-  ["vimwiki/vimwiki"] = {
+  {
+    "vimwiki/vimwiki",
     config = function()
       require "user.plugins.vim-wiki"
     end,

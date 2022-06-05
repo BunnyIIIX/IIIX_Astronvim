@@ -14,19 +14,19 @@ local unmappings = {
 
 local mappings = {
   n = {
-    ["<A-k>"] = { "<cmd>m .-2<CR>", { desc = "move line up" } },
-    ["<A-j>"] = { "<cmd>m .+1<CR>", { desc = "move line down" } },
+    ["<A-Up>"] = { "<cmd>m .-2<CR>", { desc = "move line up" } },
+    ["<A-Down>"] = { "<cmd>m .+1<CR>", { desc = "move line down" } },
     ["n"] = "nzzzv",
     ["N"] = "Nzzzv",
     ["J"] = "mzJ`z",
     ["<C-w>x"] = ":WinShift swap<cr>",
+    --=> Hop
     f = { ":HopChar1CurrentLine<cr>", { desc = "Hop 1 Char Current Line" } },
     F = { ":HopChar1<cr>", { desc = "Hop 1 Char Whole Buf" } },
-    ["<A-c>"] = { ":VCoolor<cr>", { desc = "VCoolor" } },
   },
   v = {
-    ["<A-j>"] = ":m '>+1<cr>gv=gv",
-    ["<A-k>"] = ":m '<-2<cr>gv=gv",
+    ["<A-Up>"] = ":m '>+1<cr>gv=gv",
+    ["<A-Down>"] = ":m '<-2<cr>gv=gv",
   },
   i = {
     [","] = ",<c-g>u",
