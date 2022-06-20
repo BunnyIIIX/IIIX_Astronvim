@@ -77,13 +77,13 @@ if vim.fn.has "nvim-0.7" then
   -- })
 else
   -- Restore cursor last position upon reopening the file
-  vim.cmd [[
-   augroup last_cursor_position
-     autocmd!
-     autocmd BufReadPost *
-       \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit' | execute "normal! g`\"zvzz" | endif
-   augroup END
- ]]
+  --  vim.cmd [[
+  --   augroup last_cursor_position
+  --     autocmd!
+  --     autocmd BufReadPost *
+  --       \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit' | execute "normal! g`\"zvzz" | endif
+  --   augroup END
+  -- ]]
 
   -- vim.cmd(
   --   [[

@@ -1,7 +1,7 @@
 -- This function is run last
 return {
-  require "user.mappings",
-  require "user.autocmds",
+  require "user.custom.mappings",
+  require "user.custom.autocmds",
   require "user.theme.sacr3d-moon",
 
   -- Set autocommands

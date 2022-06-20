@@ -15,22 +15,73 @@
 -- white        '#FFFFFF'
 -- yellow       '#E1E120'
 
--- Theme table
+--=> DEFAULT SEPARATORS
+--         [Name]          [Value]
+-----------------------------------
+-- vertical_bar          │  '┃'   │
+-- vertical_bar_thin     │  '│'   │
+-- left                  │  ''   │
+-- right                 │  ''   │
+-- block                 │  '█'   │
+-- left_filled           │  ''   │
+-- right_filled          │  ''   │
+-- slant_left            │  ''   │
+-- slant_left_thin       │  ''   │
+-- slant_right           │  ''   │
+-- slant_right_thin      │  ''   │
+-- slant_left_2          │  ''   │
+-- slant_left_2_thin     │  ''   │
+-- slant_right_2         │  ''   │
+-- slant_right_2_thin    │  ''   │
+-- left_rounded          │  ''   │
+-- left_rounded_thin     │  ''   │
+-- right_rounded         │  ''   │
+-- right_rounded_thin    │  ''   │
+-- circle                │  '●'   │
+-----------------------------------
+
+-->> Theme table
 local my_theme = {
-    fg = "#e0def4",
-    bg = "#2a283e",
-    black = "#232136",
-    skyblue = "#eb6f92",
-    -- cyan = "#9ccfd8",
-    -- green = "#56949f",
-    green = "#56f49f",
-    oceanblue = "#44415a",
-    -- magenta = "#c4a7e7",
-    -- orange = "#ea9a97",
-    red = "#eb6f92",
-    violet = "#ea9d34",
-    -- white = "#faf4ed",
-    yellow = "#ea9d34",
+  fg = "#e0def4",
+  bg = "#2a283e",
+  black = "#232136",
+  skyblue = "#b497f7",
+  -- cyan = "#9ccfd8",
+  -- green = "#56949f",
+  green = "#64617a",
+  oceanblue = "#44415a",
+  magenta = "#c4a7e7",
+  orange = "#ea9a97",
+  red = "#56f49f",
+  violet = "#ea9a97",
+  -- white = "#faf4ed",
+  yellow = "#ea9d34",
+
+  -- Making icon always visible
+  -- icon = {
+  --   str = "", --
+  --   hl = {
+  --     fg = require("feline.providers.vi_mode").get_mode_color(),
+  --     bg = "black",
+  --     style = "bold",
+  --   },
+  --   always_visible = true,
+  -- },
+
+  -- -- Setting sep to a table with highlight
+  -- left_sep = {
+  --   str = "slant_left",
+  --   hl = {
+  --     fg = "#e0def4",
+  --     bg = "#2a283e",
+  --   },
+  -- },
+
+  -- Making sep always visible
+  -- right_sep = {
+  --   str = " ",
+  --   always_visible = true,
+  -- },
 }
 
 -- require('feline').setup()

@@ -1,19 +1,20 @@
 local map = require("user.utils").map
+-- local map = vim.set.map
 -- local unmap = vim.keymap.del
 
 -- Activating Cinnamon:
 require("cinnamon").setup {
 	--> Keymap
-	default_keymaps = true, -- Create default keymaps.
-	extra_keymaps = true,
-	extended_keymaps = true,
+	default_keymaps = false, -- Create default keymaps.
+	extra_keymaps = false,
+	extended_keymaps = false,
 
 	-- OPTIONS:
 	always_scroll = false, -- Scroll the cursor even when the window hasn't scrolled.
 	centered = true, -- Keep cursor centered in window when using window scrolling.
-	default_delay = 3, -- The default delay (in ms) between each line when scrolling.
+	default_delay = 11, -- The default delay (in ms) between each line when scrolling.
 	horizontal_scroll = false, -- Enable smooth horizontal scrolling when view shifts left or right.
-	scroll_limit = 150, -- Max number
+	scroll_limit = 300, -- Max number
 }
 
 --=> Unmap keymap
@@ -38,8 +39,8 @@ map({ "n", "x" }, "gg", "<Cmd>lua Scroll('gg', 0, 0, 3)<CR>")
 map({ "n", "x" }, "G", "<Cmd>lua Scroll('G', 0, 1, 3)<CR>")
 
 -- Paragraph movements:
-map({ "n", "x" }, "{", "<Cmd>lua Scroll('{')<CR>")
-map({ "n", "x" }, "}", "<Cmd>lua Scroll('}')<CR>")
+map({ "n", "x" }, "(", "<Cmd>lua Scroll('{')<CR>")
+map({ "n", "x" }, ")", "<Cmd>lua Scroll('}')<CR>")
 
 -- Previous/next search result:
 map("n", "n", "<Cmd>lua Scroll('n', 1)<CR>")
@@ -54,8 +55,8 @@ map("n", "g#", "<Cmd>lua Scroll('g#', 1)<CR>")
 -- map("n", "<M-i>", "<Cmd>lua Scroll('1<C-i>', 1)<CR>")
 
 -- Horizontal screen scrolling:
-map("n", "zh", "<Cmd>lua Scroll('zH')<CR>")
-map("n", "zl", "<Cmd>lua Scroll('zL')<CR>")
+-- map("n", "zh", "<Cmd>lua Scroll('zH')<CR>")
+-- map("n", "zl", "<Cmd>lua Scroll('zL')<CR>")
 -- map("n", "zs", "<Cmd>lua Scroll('zs')<CR>")
 -- map("n", "ze", "<Cmd>lua Scroll('ze')<CR>")
 -- map("n", "zh", "<Cmd>lua Scroll('zh', 0, 1)<CR>")
@@ -80,19 +81,18 @@ map("n", "zl", "<Cmd>lua Scroll('zL')<CR>")
 
 --> EXTENDED_KEYMAPS:
 -- Up/down movements:
-map({ "n", "x" }, "k", "<Cmd>lua Scroll('k', 0, 1, 3, 0)<CR>")
-map({ "n", "x" }, "j", "<Cmd>lua Scroll('j', 0, 1, 3, 0)<CR>")
-map({ "n", "x" }, "<Up>", "<Cmd>lua Scroll('k', 0, 1, 3, 0)<CR>")
-map({ "n", "x" }, "<Down>", "<Cmd>lua Scroll('j', 0, 1, 3, 0)<CR>")
+-- map({ "n", "x" }, "k", "<Cmd>lua Scroll('k', 0, 1, 3, 0)<CR>")
+-- map({ "n", "x" }, "j", "<Cmd>lua Scroll('j', 0, 1, 3, 0)<CR>")
+-- map({ "n", "x" }, "<Up>", "<Cmd>lua Scroll('k', 0, 1, 3, 0)<CR>")
+-- map({ "n", "x" }, "<Down>", "<Cmd>lua Scroll('j', 0, 1, 3, 0)<CR>")
 
 -- Left/right movements:
-map({ "n", "x" }, "h", "<Cmd>lua Scroll('h', 0, 1, 3, 0)<CR>")
-map({ "n", "x" }, "l", "<Cmd>lua Scroll('l', 0, 1, 3, 0)<CR>")
-map({ "n", "x" }, "<Left>", "<Cmd>lua Scroll('h', 0, 1, 3, 0)<CR>")
-map({ "n", "x" }, "<Right>", "<Cmd>lua Scroll('l', 0, 1, 3, 0)<CR>")
+-- map({ "n", "x" }, "h", "<Cmd>lua Scroll('h', 0, 1, 3, 0)<CR>")
+-- map({ "n", "x" }, "l", "<Cmd>lua Scroll('l', 0, 1, 3, 0)<CR>")
+-- map({ "n", "x" }, "<Left>", "<Cmd>lua Scroll('h', 0, 1, 3, 0)<CR>")
+-- map({ "n", "x" }, "<Right>", "<Cmd>lua Scroll('l', 0, 1, 3, 0)<CR>")
 
 --> LSP_KEYMAPS:
-
 -- LSP go-to-definition:
 map("n", "gd", "<Cmd>lua Scroll('definition')<CR>")
 

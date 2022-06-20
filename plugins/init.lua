@@ -1,35 +1,68 @@
 return {
-  ["declancm/cinnamon.nvim"] = { disable = true },
   ["goolord/alpha-nvim"] = { disable = true },
   ["lukas-reineke/indent-blankline.nvim"] = { disable = true },
   ["max397574/better-escape.nvim"] = { disable = true },
-  ["numToStr/Comment.nvim"] = { opt = false },
+  -- ["numToStr/Comment.nvim"] = { opt = false },
 
+  --{{{=> Telescope
   ["nvim-telescope/telescope.nvim"] = {
     cmd = "Telescope",
     module = "telescope",
     config = function()
-      require("user.plugins.telescope")
+      require "user.plugins.telescope"
+      require("telescope").load_extension "notify"
     end,
   },
-
-  --=> Code Easily
-  { "machakann/vim-sandwich" },
-  -- Highlight, navigate, and operate on sets of matching text
-  { "andymass/vim-matchup", after = "nvim-treesitter" },
-
-  -- Easily Create Table
   {
-    "dhruvasagar/vim-table-mode",
-    cmd = "TableModeToggle",
-    setup = function()
-      vim.g.table_mode_corner = "|"
+    "nvim-telescope/telescope-file-browser.nvim",
+    after = "telescope.nvim",
+    module = "telescope._extensions.file_browser",
+    config = function()
+      require("telescope").load_extension "file_browser"
     end,
   },
-  -- ["windwp/nvim-autopairs"] = {},
-  -- ["tpope/vim-repeat"] = {},
+  {
+    "nvim-telescope/telescope-hop.nvim",
+    after = "telescope.nvim",
+    module = "telescope._extensions.hop",
+    config = function()
+      require("telescope").load_extension "hop"
+    end,
+  },
+  {
+    "nvim-telescope/telescope-project.nvim",
+    after = "telescope.nvim",
+    module = "telescope._extensions.project",
+    config = function()
+      require("telescope").load_extension "project"
+    end,
+  },
+  {
+    "benfowler/telescope-luasnip.nvim",
+    after = "telescope.nvim",
+    module = "telescope._extensions.luasnip",
+    config = function()
+      require("telescope").load_extension "luasnip"
+    end,
+  },
 
-  --=> Cmp
+  --   "nvim-telescope/telescope-bibtex.nvim",
+  --   after = "telescope.nvim",
+  --   config = function()
+  --     require("telescope").load_extension "bibtex"
+  --   end,
+  -- },
+  -- {
+  --   "nvim-telescope/telescope-media-files.nvim",
+  --   after = "telescope.nvim",
+  --   config = function()
+  --     require("telescope").load_extension "media_files"
+  --   end,
+  -- },
+  --}}}
+
+  --{{{=> Code Easily
+  --{{{=> Cmp
   {
     "hrsh7th/cmp-calc",
     after = "nvim-cmp",
@@ -52,7 +85,6 @@ return {
       require("core.utils").add_user_cmp_source "cmdline"
     end,
   },
-
   -- ["jc-doyle/cmp-pandoc-references"] = {
   --   after = "nvim-cmp",
   --   config = function()
@@ -65,11 +97,13 @@ return {
   --     require("core.utils").add_user_cmp_source "latex_symbols"
   --   end,
   -- },
+  --}}}
 
-  --=> Lsp
+  --{{{=> Lsp
   { "nanotee/sqls.nvim", module = "sqls", after = "nvim-lspconfig" },
+  --}}}
 
-  --=> Jumper
+  --{{{=> Jumper
   {
     "phaazon/hop.nvim",
     branch = "v1",
@@ -84,85 +118,26 @@ return {
     end,
   },
   -- ["ggandor/lightspeed.nvim"] = {},
+  --}}}
 
-  --=> Syntax
+  { "machakann/vim-sandwich" },
+  -- Highlight, navigate, and operate on sets of matching text
+  { "andymass/vim-matchup", after = "nvim-treesitter" },
+  -- Easily Create Table
+  {
+    "dhruvasagar/vim-table-mode",
+    cmd = "TableModeToggle",
+    setup = function()
+      vim.g.table_mode_corner = "|"
+    end,
+  },
+  -- ["windwp/nvim-autopairs"] = {},
+  -- ["tpope/vim-repeat"] = {},
+  --}}}
+
+  --{{{=> Syntax / Colorscheme
   { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
   -- ["ziontee113/syntax-tree-surfer"] = { module = "syntax-tree-surfer" },
-
-  --=> Telescope
-  {
-    "nvim-telescope/telescope-file-browser.nvim",
-    after = "telescope.nvim",
-    module = "telescope._extensions.file_browser",
-    config = function()
-      require("telescope").load_extension "file_browser"
-    end,
-  },
-
-  {
-    "nvim-telescope/telescope-hop.nvim",
-    after = "telescope.nvim",
-    module = "telescope._extensions.hop",
-    config = function()
-      require("telescope").load_extension "hop"
-    end,
-  },
-
-  {
-    "nvim-telescope/telescope-project.nvim",
-    after = "telescope.nvim",
-    module = "telescope._extensions.project",
-    config = function()
-      require("telescope").load_extension "project"
-    end,
-  },
-
-  {
-    "benfowler/telescope-luasnip.nvim",
-    after = "telescope.nvim",
-    module = "telescope._extensions.luasnip",
-    config = function()
-      require("telescope").load_extension "luasnip"
-    end,
-  },
-
-  -- {
-  --   "nvim-telescope/telescope-file-browser.nvim",
-  --   after = "telescope.nvim",
-  --   config = function()
-  --     require("telescope").load_extension "file_browser"
-  --   end,
-  -- },
-  -- {
-  --   "nvim-telescope/telescope-hop.nvim",
-  --   after = "telescope.nvim",
-  --   config = function()
-  --     require("telescope").load_extension "hop"
-  --   end,
-  -- },
-  -- {
-  --   "nvim-telescope/telescope-bibtex.nvim",
-  --   after = "telescope.nvim",
-  --   config = function()
-  --     require("telescope").load_extension "bibtex"
-  --   end,
-  -- },
-  -- {
-  --   "nvim-telescope/telescope-media-files.nvim",
-  --   after = "telescope.nvim",
-  --   config = function()
-  --     require("telescope").load_extension "media_files"
-  --   end,
-  -- },
-  -- {
-  --   "nvim-telescope/telescope-project.nvim",
-  --   after = "telescope.nvim",
-  --   config = function()
-  --     require("telescope").load_extension "project"
-  --   end,
-  -- },
-
-  --=> Colorscheme
   {
     "rose-pine/neovim",
     as = "rose-pine",
@@ -172,22 +147,16 @@ return {
       -- vim.cmd "colorscheme rose-pine"
     end,
   },
-  {
-    "EdenEast/nightfox.nvim",
-    config = function()
-      require("nightfox").setup(require "user.plugins.nightfox")
-    end,
-  },
+  -- {
+  --   "EdenEast/nightfox.nvim",
+  --   config = function()
+  --     require("nightfox").setup(require "user.plugins.nightfox")
+  --   end,
+  -- },
+  --}}}
 
-  --=> UI
-  {
-    "ellisonleao/glow.nvim",
-    cmd = "Glow",
-    module = "glow",
-    setup = function()
-      vim.g.glow_border = "rounded"
-    end,
-  },
+  --{{{=> UI
+  ["declancm/cinnamon.nvim"] = { disable = false },
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
@@ -196,7 +165,14 @@ return {
       require("zen-mode").setup(require "user.plugins.zen-mode")
     end,
   },
-
+  -- {
+  --   "ellisonleao/glow.nvim",
+  --   cmd = "Glow",
+  --   module = "glow",
+  --   setup = function()
+  --     vim.g.glow_border = "rounded"
+  --   end,
+  -- },
   --=> Status-Line
   ["feline-nvim/feline.nvim"] = {
     setup = function()
@@ -208,7 +184,68 @@ return {
       require "user.theme.sacr3d-moon"
     end,
   },
+  --}}}
 
+  --{{{=> Note/Wiki
+  {
+    "vimwiki/vimwiki",
+    -- cmd = {
+    --   "VimwikiIndex",
+    --   "2VimwikiIndex",
+    -- },
+    -- config = function()
+    --   require "user.plugins.vim-wiki"
+    -- end,
+    opt = false,
+  },
+  -- plain text note-taking assistant
+  -- ["mickael-menu/zk-nvim"] = {
+  --   module = { "zk", "zk.commands" },
+  --   config = function()
+  --     require("zk").setup(require "user.plugins.zk")
+  --   end,
+  -- },
+  -- ["vitalk/vim-simple-todo"] = {
+  --   keys = {
+  --     "<Plug>(simple-todo-above)",
+  --     "<Plug>(simple-todo-below)",
+  --     "<Plug>(simple-todo-mark-as-done)",
+  --     "<Plug>(simple-todo-mark-as-undone)",
+  --     "<Plug>(simple-todo-mark-switch)",
+  --     "<Plug>(simple-todo-new-list-item)",
+  --     "<Plug>(simple-todo-new-list-item-start-of-line)",
+  --   },
+  --   setup = function()
+  --     vim.g.simple_todo_map_keys = false
+  --   end,
+  -- },
+  --}}}
+
+  --{{{=> Debug
+  -- ["mfussenegger/nvim-dap"] = {
+  --   module = "dap",
+  --   config = require "user.plugins.dap",
+  -- },
+  -- ["rcarriga/nvim-dap-ui"] = {
+  --   after = "nvim-dap",
+  --   config = function()
+  --     local dap, dapui = require "dap", require "dapui"
+  --     dapui.setup(require "user.plugins.dapui")
+  --     -- add listeners to auto open DAP UI
+  --     dap.listeners.after.event_initialized["dapui_config"] = function()
+  --       dapui.open()
+  --     end
+  --     dap.listeners.before.event_terminated["dapui_config"] = function()
+  --       dapui.close()
+  --     end
+  --     dap.listeners.before.event_exited["dapui_config"] = function()
+  --       dapui.close()
+  --     end
+  --   end,
+  -- },
+  --}}}
+
+  --{{{=> Misc
   -- -- Collection of minimal, independent, and fast Lua modules
   -- ["echasnovski/mini.nvim"] = {
   --   event = "VimEnter",
@@ -232,60 +269,6 @@ return {
   --     require("headlines").setup(require "user.plugins.headlines")
   --   end,
   -- },
-
-  --=> Note/Wiki
-  {
-    "vimwiki/vimwiki",
-    config = function()
-      require "user.plugins.vim-wiki"
-    end,
-  },
-  -- plain text note-taking assistant
-  -- ["mickael-menu/zk-nvim"] = {
-  --   module = { "zk", "zk.commands" },
-  --   config = function()
-  --     require("zk").setup(require "user.plugins.zk")
-  --   end,
-  -- },
-  -- ["vitalk/vim-simple-todo"] = {
-  --   keys = {
-  --     "<Plug>(simple-todo-above)",
-  --     "<Plug>(simple-todo-below)",
-  --     "<Plug>(simple-todo-mark-as-done)",
-  --     "<Plug>(simple-todo-mark-as-undone)",
-  --     "<Plug>(simple-todo-mark-switch)",
-  --     "<Plug>(simple-todo-new-list-item)",
-  --     "<Plug>(simple-todo-new-list-item-start-of-line)",
-  --   },
-  --   setup = function()
-  --     vim.g.simple_todo_map_keys = false
-  --   end,
-  -- },
-
-  --=> Debug
-  -- ["mfussenegger/nvim-dap"] = {
-  --   module = "dap",
-  --   config = require "user.plugins.dap",
-  -- },
-  -- ["rcarriga/nvim-dap-ui"] = {
-  --   after = "nvim-dap",
-  --   config = function()
-  --     local dap, dapui = require "dap", require "dapui"
-  --     dapui.setup(require "user.plugins.dapui")
-  --     -- add listeners to auto open DAP UI
-  --     dap.listeners.after.event_initialized["dapui_config"] = function()
-  --       dapui.open()
-  --     end
-  --     dap.listeners.before.event_terminated["dapui_config"] = function()
-  --       dapui.close()
-  --     end
-  --     dap.listeners.before.event_exited["dapui_config"] = function()
-  --       dapui.close()
-  --     end
-  --   end,
-  -- },
-
-  --=> Misc
   -- ["jbyuki/nabla.nvim"] = {
   --   module = "nabla",
   -- },
@@ -310,4 +293,6 @@ return {
   --     require("core.utils").defer_plugin "vim-wakatime"
   --   end,
   -- },
+  --}}}
+
 }

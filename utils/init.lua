@@ -1,12 +1,12 @@
 local M = {}
 
--- function M.map(mode, lhs, rhs, opts)
--- 	local options = { noremap = true, silent = true }
--- 	if opts then
--- 		options = M.merge(options, opts)
--- 	end
--- 	vim.keymap.set(mode, lhs, rhs, options)
--- end
+function M.map(mode, lhs, rhs, opts)
+  local options = { noremap = true, silent = true }
+  if opts then
+    options = M.merge(options, opts)
+  end
+  vim.keymap.set(mode, lhs, rhs, options)
+end
 
 -- function M.map(mode, lhs, rhs, opts)
 --   local options = { noremap = true, silent = true }

@@ -1,4 +1,4 @@
-local map = vim.keymap.set
+-- local map = vim.keymap.set
 
 -- vim.cmd('source ~/.config/nvim/lua/user/config/vim-wiki/vimwiki.vim')
 
@@ -20,10 +20,10 @@ local map = vim.keymap.set
 --}}}
 
 --{{{ =>> MAPPINGS <<=
-map("n", "<space>w", ":1VimwikiIndex<CR>", { noremap = true, silent = true })
-map("n", "2<space>w", ":2VimwikiIndex<CR>", { noremap = true, silent = true })
-map("n", "<space><Down>", ":VimwikiNextLink<CR>", { noremap = true, silent = true })
-map("n", "<space><Up>", ":VimwikiPrevLink<CR>", { noremap = true, silent = true })
+-- map("n", "<space>w", ":1VimwikiIndex<CR>", { noremap = true, silent = true })
+-- map("n", "2<space>w", ":2VimwikiIndex<CR>", { noremap = true, silent = true })
+-- map("n", "<space><Down>", ":VimwikiNextLink<CR>", { noremap = true, silent = true })
+-- map("n", "<space><Up>", ":VimwikiPrevLink<CR>", { noremap = true, silent = true })
 -- map('n', '<M-Right>', '<Plug>VimwikiIncreaseLvlSingleItem', { noremap = true, silent = true })
 -- map('i', '<M-Right>', '<Plug>VimwikiIncreaseLvlSingleItem', { noremap = true, silent = true })
 -- map('n', '<M-Left>', '<Plug>VimwikiDecreaseLvlSingleItem', { noremap = true, silent = true })

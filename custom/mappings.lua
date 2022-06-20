@@ -27,6 +27,11 @@ local mappings = {
     --=> Hop
     f = { ":HopChar1CurrentLine<cr>", { desc = "Hop 1 Char Current Line" } },
     F = { ":HopChar1<cr>", { desc = "Hop 1 Char Whole Buf" } },
+    --=> VimWiki
+    ["<space>w"] = ":1VimwikiIndex<CR>",
+    ["<space>ww"] = ":2VimwikiIndex<CR>",
+    ["<space><Down>"] = ":VimwikiNextLink<CR>",
+    ["<space><Up>"] = ":VimwikiPrevLink<CR>",
     --=> Sacr3d Functions
     ["<M-\\>"] = {
       "<cmd>w <CR> | :Sacr3dReloadSync <CR> | <cmd>echo 'Sync & Reloaded'<CR>",
