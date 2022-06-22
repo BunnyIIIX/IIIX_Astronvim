@@ -75,9 +75,12 @@ end
 
 function M.post_reload(msg)
   local Logger = require "user.utils.logger"
+  unload("user", true)
   unload("user.utils", true)
-  unload("core.utils", true)
-  -- unload("lualine.themes.default_theme", true)
+  unload("user.plugins", true)
+  unload("user.custom.mappings", true)
+  -- unload("user.theme.rose-pine", true)
+  -- unload("user.theme.sacr3d-moon", true)
   msg = msg or "User config reloaded!"
   Logger:log(msg)
 end
@@ -86,10 +89,11 @@ function M.reload_user_config_sync()
   M.reload_user_config()
   clear_cache()
   unload("user", true)
-  unload("user.core", true)
+  unload("user.utils", true)
   unload("user.plugins", true)
-  -- unload("configs", true)
-  unload("core", true)
+  unload("user.custom.mappings", true)
+  -- unload("user.theme.sacr3d-moon", true)
+  -- unload("user.theme.rose-pine", true)
   vim.cmd [[autocmd User PackerCompileDone ++once lua require('user.utils').post_reload()]]
   vim.cmd ":PackerSync"
 end
@@ -97,51 +101,55 @@ end
 function M.reload_user_config(compile)
   compile = compile or false
   unload("user", true)
+  unload("user.utils", true)
   unload("user.plugins", true)
+  unload("user.custom.mappings", true)
+  -- unload("user.theme.sacr3d-moon", true)
+  -- unload("user.theme.rose-pine", true)
   if compile then
     vim.cmd [[autocmd User PackerCompileDone ++once lua require('user.utils').post_reload()]]
     vim.cmd ":PackerCompile"
   end
 end
 
-function M.get_install_dir()
-  local config_dir = os.getenv "SACR3DNVIM_INSTALL_DIR"
-  if not config_dir then
-    return vim.fn.stdpath "config"
-  end
-  return config_dir
-end
+-- function M.get_install_dir()
+--   local config_dir = os.getenv "SACR3DNVIM_INSTALL_DIR"
+--   if not config_dir then
+--     return vim.fn.stdpath "config"
+--   end
+--   return config_dir
+-- end
 
 -- update instance of Sacr3dNvim
-function M.update()
-  local Logger = require "user.utils.logger"
-  local Job = require "plenary.job"
-  local path = M.get_install_dir()
-  local errors = {}
-
-  Job
-    :new({
-      command = "git",
-      args = { "pull", "--ff-only" },
-      cwd = path,
-      on_start = function()
-        Logger:log "Updating..."
-      end,
-      on_exit = function()
-        if vim.tbl_isempty(errors) then
-          Logger:log "Updated! Running Sacr3dReloadSync..."
-          M.reload_user_config_sync()
-        else
-          table.insert(errors, 1, "Something went wrong! Please pull changes manually.")
-          table.insert(errors, 2, "")
-          Logger:error("Update failed!", { timeout = 30000 })
-        end
-      end,
-      on_stderr = function(_, err)
-        table.insert(errors, err)
-      end,
-    })
-    :sync()
-end
+-- function M.update()
+--   local Logger = require "user.utils.logger"
+--   local Job = require "plenary.job"
+--   local path = M.get_install_dir()
+--   local errors = {}
+--
+--   Job
+--     :new({
+--       command = "git",
+--       args = { "pull", "--ff-only" },
+--       cwd = path,
+--       on_start = function()
+--         Logger:log "Updating..."
+--       end,
+--       on_exit = function()
+--         if vim.tbl_isempty(errors) then
+--           Logger:log "Updated! Running Sacr3dReloadSync..."
+--           M.reload_user_config_sync()
+--         else
+--           table.insert(errors, 1, "Something went wrong! Please pull changes manually.")
+--           table.insert(errors, 2, "")
+--           Logger:error("Update failed!", { timeout = 30000 })
+--         end
+--       end,
+--       on_stderr = function(_, err)
+--         table.insert(errors, err)
+--       end,
+--     })
+--     :sync()
+-- end
 
 return M

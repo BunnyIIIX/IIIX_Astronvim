@@ -23,12 +23,11 @@ return {
     wildmenu = true,
 
     -- ui
-    relativenumber = false,
+    rnu = false,
     cursorline = true,
     laststatus = 2,
     mouse = "n",
     number = true,
-    rnu = true,
     scrolloff = 18,
     showmode = false,
     sidescrolloff = 10, -- Lines to scroll horizontally
@@ -82,5 +81,30 @@ return {
     showbreak = "↪ ",
     spellfile = "~/.config/nvim/lua/user/spell/en.utf-8.add",
     thesaurus = "~/.config/nvim/lua/user/spell/mthesaur.txt",
+  },
+
+  g = {
+    do_filetype_lua = 1, -- use filetype.lua
+    did_load_filetypes = 0, -- don't use filetype.vim
+    highlighturl_enabled = true, -- highlight URLs by default
+    mapleader = " ", -- set leader key
+    zipPlugin = false, -- disable zip
+    load_black = false, -- disable black
+    loaded_2html_plugin = true, -- disable 2html
+    loaded_getscript = true, -- disable getscript
+    loaded_getscriptPlugin = true, -- disable getscript
+    loaded_gzip = true, -- disable gzip
+    loaded_logipat = true, -- disable logipat
+    loaded_matchit = true, -- disable matchit
+    loaded_netrwFileHandlers = true, -- disable netrw
+    loaded_netrwPlugin = true, -- disable netrw
+    loaded_netrwSettngs = true, -- disable netrw
+    loaded_remote_plugins = true, -- disable remote plugins
+    loaded_tar = true, -- disable tar
+    loaded_tarPlugin = true, -- disable tar
+    loaded_zip = true, -- disable zip
+    loaded_zipPlugin = true, -- disable zip
+    loaded_vimball = true, -- disable vimball
+    loaded_vimballPlugin = true, -- disable vimball
   },
 }
