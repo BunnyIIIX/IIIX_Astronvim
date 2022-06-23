@@ -143,7 +143,7 @@ return {
     as = "rose-pine",
     config = function()
       vim.g.rose_pine_variant = "moon"
-      require "user.theme.rose-pine"
+      -- require "user.theme.rose-pine"
       -- vim.cmd "colorscheme rose-pine"
     end,
   },
@@ -174,16 +174,16 @@ return {
   --   end,
   -- },
   --=> Status-Line
-  ["feline-nvim/feline.nvim"] = {
-    setup = function()
-      require("feline").setup()
-      -- require("feline").use_theme(my_theme)
-      -- require("user.theme.sacr3d-moon")
-    end,
-    config = function()
-      require "user.theme.sacr3d-moon"
-    end,
-  },
+  -- ["feline-nvim/feline.nvim"] = {
+  --   setup = function()
+  --     require("feline").setup()
+  --     -- require("feline").use_theme(my_theme)
+  --     -- require("user.theme.sacr3d-moon")
+  --   end,
+  --   config = function()
+  --     require "user.theme.sacr3d-moon"
+  --   end,
+  -- },
   --}}}
 
   --{{{=> Note/Wiki

@@ -24,6 +24,12 @@ return {
     j = { "<cmd>HopWord<cr>", "Word" },
   },
 
+  e = {
+    name = "NeoTree",
+    e = { "<cmd>Neotree float<cr>", "Neotree Float" },
+    f = { "<cmd>Neotree focus<cr>", "Neotree Focus" },
+  },
+
   f = {
     name = "Telescope",
     ["?"] = { "<cmd>Telescope help_tags<cr>", "Find Help" },
