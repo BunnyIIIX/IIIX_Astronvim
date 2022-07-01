@@ -112,6 +112,19 @@ function M.reload_user_config(compile)
   end
 end
 
+function M.ReloadConfig()
+  local hls_status = vim.v.hlsearch
+  for name, _ in pairs(package.loaded) do
+    if name:match "^cnull" then
+      package.loaded[name] = nil
+    end
+  end
+  dofile(vim.env.MYVIMRC)
+  if hls_status == 0 then
+    vim.opt.hlsearch = false
+  end
+end
+
 -- function M.get_install_dir()
 --   local config_dir = os.getenv "SACR3DNVIM_INSTALL_DIR"
 --   if not config_dir then

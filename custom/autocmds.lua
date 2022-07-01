@@ -7,6 +7,7 @@ if vim.fn.has "nvim-0.7" then
   cmd("Sacr3dReload", "lua require('user.utils').reload_user_config(true)", {})
   cmd("Sacr3dReloadSync", "lua require('user.utils').reload_user_config_sync()", {})
   cmd("LspFormat", "lua vim.lsp.buf.formatting()", {})
+  -- cmd("Reload", "lua require('user.utils').ReloadConfig(true)", {})
 
   --> Go to last loc when opening a buffer
   group("Sacr3d_lastPosition", { clear = true })

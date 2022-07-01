@@ -77,11 +77,11 @@ local config = {
   cmp = {
     source_priority = {
       luasnip = 1000,
-      path = 750,
       nvim_lsp = 700,
+      path = 750,
       emoji = 650,
-      cmdline = 600,
       buffer = 250,
+      cmdline = 600,
     },
   },
 }

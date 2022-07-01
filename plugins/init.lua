@@ -99,6 +99,19 @@ return {
   -- },
   --}}}
 
+  --{{{=> LuaSnip
+    ["L3MON4D3/LuaSnip"] = {
+    cmd = {
+      "LuaSnipEdit",
+      "LuaSnipListAvailable",
+      "LuaSnipUnlinkCurrent",
+    },
+    config = function()
+      require "user.plugins.luasnip"
+    end,
+  },
+  --}}}
+
   --{{{=> Lsp
   { "nanotee/sqls.nvim", module = "sqls", after = "nvim-lspconfig" },
   --}}}
@@ -294,5 +307,4 @@ return {
   --   end,
   -- },
   --}}}
-
 }

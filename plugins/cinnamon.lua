@@ -24,29 +24,29 @@ require("cinnamon").setup {
 
 --=> CUSTOM KEYMAPS
 -- Half-window movements:
-map({ "n", "x" }, "<M-Up>", "<Cmd>lua Scroll('<C-u>', 1, 1)<CR>")
-map({ "n", "x" }, "<M-Down>", "<Cmd>lua Scroll('<C-d>', 1, 1)<CR>")
+map({ "n", "x" }, "<M-Up>", "<Cmd>lua Scroll('<C-u>', 0, 1, 5)<CR>")
+map({ "n", "x" }, "<M-Down>", "<Cmd>lua Scroll('<C-d>', 0, 1, 5)<CR>")
 
 -- Page movements:
 -- map({ "n", "x" }, "<C-Up>", "<Cmd>lua Scroll('<C-b>', 1, 1)<CR>")
 -- map({ "n", "x" }, "<C-Down>", "<Cmd>lua Scroll('<C-f>', 1, 1)<CR>")
-map({ "n", "x" }, "<PageUp>", "<Cmd>lua Scroll('<C-b>', 1, 1)<CR>")
-map({ "n", "x" }, "<PageDown>", "<Cmd>lua Scroll('<C-f>', 1, 1)<CR>")
+map({ "n", "x" }, "<PageUp>", "<Cmd>lua Scroll('<C-b>', 0, 1, 5)<CR>")
+map({ "n", "x" }, "<PageDown>", "<Cmd>lua Scroll('<C-f>', 0, 1, 5)<CR>")
 
 --=> EXTRA_KEYMAPS:
 -- Start/end of file and line number movements:
-map({ "n", "x" }, "gg", "<Cmd>lua Scroll('gg', 0, 0, 3)<CR>")
-map({ "n", "x" }, "G", "<Cmd>lua Scroll('G', 0, 1, 3)<CR>")
+map({ "n", "x" }, "gg", "<Cmd>lua Scroll('gg', 0, 3, 3)<CR>")
+map({ "n", "x" }, "G", "<Cmd>lua Scroll('G', 0, 3, 3)<CR>")
 
 -- Paragraph movements:
 map({ "n", "x" }, "(", "<Cmd>lua Scroll('{')<CR>")
 map({ "n", "x" }, ")", "<Cmd>lua Scroll('}')<CR>")
 
 -- Previous/next search result:
-map("n", "n", "<Cmd>lua Scroll('n', 1)<CR>")
-map("n", "N", "<Cmd>lua Scroll('N', 1)<CR>")
-map("n", "*", "<Cmd>lua Scroll('*', 1)<CR>")
-map("n", "#", "<Cmd>lua Scroll('#', 1)<CR>")
+map("n", "n", "<Cmd>lua Scroll('n', 0, 3, 3)<CR>")
+map("n", "N", "<Cmd>lua Scroll('N', 0, 3, 3)<CR>")
+map("n", "*", "<Cmd>lua Scroll('*', 0, 3, 3)<CR>")
+map("n", "#", "<Cmd>lua Scroll('#', 0, 3, 3)<CR>")
 map("n", "g*", "<Cmd>lua Scroll('g*', 1)<CR>")
 map("n", "g#", "<Cmd>lua Scroll('g#', 1)<CR>")
 

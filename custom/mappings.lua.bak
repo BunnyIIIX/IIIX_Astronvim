@@ -101,3 +101,5 @@ for mode, unmaps in pairs(unmappings) do
   end
 end
 --}}}
+
+-- vim: ft=lua:

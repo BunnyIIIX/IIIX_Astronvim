@@ -16,43 +16,35 @@ return {
     smartindent = true,
 
     -- search
-    hlsearch = false,
+    hlsearch = true,
     ignorecase = true,
     smartcase = true,
     wildignore = vim.opt.wildignore + { "*/node_modules/*", "*/.git/*", "*/vendor/*" },
     wildmenu = true,
 
     -- ui
-    rnu = false,
+    relativenumber = false,
     cursorline = true,
     laststatus = 2,
     mouse = "n",
     number = true,
     scrolloff = 18,
     showmode = false,
-    sidescrolloff = 10, -- Lines to scroll horizontally
+    sidescrolloff = 15, -- Lines to scroll horizontally
     splitbelow = true, -- Open new split below
     splitright = true, -- Open new split to the right
     wrap = false,
+    signcolumn = "yes",
     list = true,
     listchars = {
-      tab = "", -- →
-      extends = "⟩",
-      precedes = "⟨",
+      tab = " ", -- `→`,``,`-->`,'❘-','>-'
+      extends = "»", -- '>'
+      precedes = "«", -- '<'
       trail = "·",
-      nbsp = "␣",
+      nbsp = "␣", -- '%',`×`
+      -- lead = "", --> '', '·',
+      -- eol = '<',
     },
-    -- listchars = {
-    --   tab = " ", --> '❘-', '>-', ''
-    --   trail = "·",
-    --   lead = "", --> '', '·',
-    --   extends = "»", --> '>'
-    --   precedes = "«", --> '<'
-    --   nbsp = "×", --> '%'
-    --   -- eol = '<',
-    -- },
-    -- lazyredraw = true,
-    -- signcolumn = 'yes'
 
     -- backups
     backup = false,
@@ -66,6 +58,7 @@ return {
     -- shortmess = vim.opt.shortmess + { c = true },
 
     -- perfomance
+    lazyredraw = true,
     redrawtime = 1500,
     timeoutlen = 250,
     ttimeoutlen = 10,
@@ -84,10 +77,10 @@ return {
   },
 
   g = {
+    mapleader = " ", -- set leader key
     do_filetype_lua = 1, -- use filetype.lua
     did_load_filetypes = 0, -- don't use filetype.vim
     highlighturl_enabled = true, -- highlight URLs by default
-    mapleader = " ", -- set leader key
     zipPlugin = false, -- disable zip
     load_black = false, -- disable black
     loaded_2html_plugin = true, -- disable 2html

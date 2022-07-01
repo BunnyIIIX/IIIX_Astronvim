@@ -23,10 +23,10 @@ return {
     ["<space><Up>"] = ":VimwikiPrevLink<CR>",
     --=> Sacr3d Functions
     ["<M-\\>"] = {
-      "<cmd>w <CR> | :Sacr3dReloadSync <CR> | <cmd>echo 'Sync & Reloaded'<CR>",
+      "<cmd>w <CR> | :Sacr3dReloadSync <CR> | <cmd>echo 'SyncReloaded!'<CR>",
       desc = "Sacr3dReloadSync",
     },
-    ["<M-Enter>"] = { ":w <CR> | <cmd>Sacr3dReload <CR> | <cmd>echo 'Reloaded'<CR>", desc = "Sacr3dReload" },
+    ["<M-Enter>"] = { "<cmd>w <CR> | <cmd>Sacr3dReload <CR> | <cmd>echo 'Reloaded!'<CR>", desc = "Sacr3dReload" },
     --=> Line Manipulation
     ["<A-Up>"] = { ":m .-2<CR>", desc = "move line up" },
     ["<A-Down>"] = { ":m .+1<CR>", desc = "move line down" },
@@ -34,6 +34,9 @@ return {
     ["n"] = "nzzzv",
     ["N"] = "Nzzzv",
     ["J"] = "mzJ`z",
+    --> Use ESC to turn off search highlighting
+    ["<Esc>"] = { "<cmd>nohlsearch<Bar>:echo 'hlsearch OFF!'<CR>", desc = "Toggle Higlight" },
+    -- ["<Esc>"] = { ":set nohlsearch!<CR>", desc = "Toggle Higlight" },
   },
 
   --=> Visual Mode
@@ -45,8 +48,6 @@ return {
     ["<A-Down>"] = ":m '>+1<cr>gv=gv",
     --=> Don't copy the replaced text after pasting in visual mode
     ["p"] = "p:let @+=@0<CR>",
-    --> Use ESC to turn off search highlighting
-    ["Esc"] = { ":nohlsearch<Bar>:echo<CR>", desc = "Toggle Higlight" },
   },
 
   --=> Insert Mode
