@@ -70,9 +70,9 @@ local function cs(trigger, nodes, opts)
 end
 --}}}
 
---{{{=> Start Refactoring
+--{{{=>> Snippets <<=
 
---> Set keybind
+-->> Set Keybinds <<--
 cs(
   "kbind",
   fmt('map("{}", "{}", "{}")', {
@@ -81,7 +81,8 @@ cs(
     i(3, "commands"),
   })
 )
---> Set keybind (with choice node)
+
+-->> Set keybind (with choice node) <<--
 cs(
   "kbinds",
   fmt([=[map({})]=], {
@@ -98,37 +99,26 @@ cs(
   })
 )
 
+-->> Title <<--
 cs(
-  "testtt",
+  "ttl",
   c(1, {
-    t "some text", -- textNodes are just stopped at.
-    i(nil, "some text"), -- likewise.
-    -- sn(nil, {t"some text"}) -- this will not work!
-    sn(nil, { i(1, "modee"), t "some text" }), -- this will.
+    sn(nil, { t "--=>> ", i(1, "title"), t " <<=--" }),
+    sn(nil, { t "-->> ", i(1, "title"), t " <<--" }),
   })
 )
 
-cs(
-  "trig",
-  c(1, {
-    t "Ugh boring, a text node",
-    i(nil, "At least I can edit something now..."),
-    f(function(args)
-      return "Still only counts as text!!"
-    end, {}),
-  })
-)
-
---> single line vim.cmd
+-->> [CMD] Single line vim.cmd <<--
 cs("cmd", fmt("vim.cmd[[{}]]", { i(1, "") }))
---> [CMD] multiline vim.cmd
+
+-->> [CMD] Multiline vim.cmd <<--
 cs("CMD", {
   t { "vim.cmd[[", "  " },
   i(1, ""),
   t { "", "]]" },
 })
 
---> github import for packer
+-->> Github import for packer <<--
 cs({
   trig = "https://github%.com/([%w-%._]+)/([%w-%._]+)!",
   regTrig = true,
@@ -146,7 +136,77 @@ cs({
   i(1, ""),
 }, "auto")
 
---> {regexSnippet} LuaSnippet
+-->> [function] Lua function snippet <<--
+cs(
+  "function",
+  fmt(
+    [[ 
+function {}({})
+  {}
+end
+]],
+    {
+      i(1, "arg"),
+      i(2, "arg"),
+      i(3, "commands"),
+    }
+  ),
+  "jff"
+)
+
+-->> [local_function] Lua function snippet <<--
+cs(
+  "local_function",
+  fmt(
+    [[ 
+local function {}({})
+  {}
+end
+]],
+    {
+      i(1, "arg"),
+      i(2, "arg"),
+      i(3, "commands"),
+    }
+  ),
+  "jlf"
+)
+
+-->> [local] Lua local variable snippet <<--
+cs(
+  "local",
+  fmt(
+    [[ 
+local {} = {}
+  ]],
+    { i(1, ""), i(2, "") }
+  ),
+  "jj"
+)
+
+--=>> Example <<=--
+cs(
+  "example1",
+  c(1, {
+    t "some text", -- textNodes are just stopped at.
+    i(nil, "some text"), -- likewise.
+    -- sn(nil, {t"some text"}) -- this will not work!
+    sn(nil, { i(1, "modee"), t "some text" }), -- this will.
+  })
+)
+
+cs(
+  "example2",
+  c(1, {
+    t "Ugh boring, a text node",
+    i(nil, "At least I can edit something now..."),
+    f(function(args)
+      return "Still only counts as text!!"
+    end, {}),
+  })
+)
+
+-->> {regexSnippet} LuaSnippet <<--
 cs(
   "regexSnippet",
   fmt(
@@ -168,7 +228,7 @@ cs( -- {}
   { pattern = "*/snippets/*.lua", "<C-d>" }
 )
 
---> [luaSnippet] LuaSnippet
+-->> [luaSnippet] LuaSnippet <<--
 cs(
   "luaSnippet",
   fmt(
@@ -195,7 +255,7 @@ cs("{}", fmt( -- {}
   { pattern = "*/snippets/*.lua", "jcs" }
 )
 
---> choice_node_snippet luaSnip choice node
+-->> choice_node_snippet luaSnip choice node <<--
 cs(
   "choice_node_snippet",
   fmt(
@@ -209,57 +269,5 @@ c({}, {{ {} }}),
   ),
   { pattern = "*/snippets/*.lua", "jcn" }
 )
-
---> [function] Lua function snippet
-cs(
-  "function",
-  fmt(
-    [[ 
-function {}({})
-  {}
-end
-]],
-    {
-      i(1, ""),
-      i(2, ""),
-      i(3, ""),
-    }
-  ),
-  "jff"
-)
-
---> [local_function] Lua function snippet
-cs(
-  "local_function",
-  fmt(
-    [[ 
-local function {}({})
-  {}
-end
-]],
-    {
-      i(1, ""),
-      i(2, ""),
-      i(3, ""),
-    }
-  ),
-  "jlf"
-)
-
---> [local] Lua local variable snippet
-cs(
-  "local",
-  fmt(
-    [[ 
-local {} = {}
-  ]],
-    { i(1, ""), i(2, "") }
-  ),
-  "jj"
-)
-
--- Tutorial Snippets go here --
-
--- End Refactoring --
 
 return snippets, autosnippets

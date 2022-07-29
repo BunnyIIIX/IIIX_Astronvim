@@ -1,0 +1,129 @@
+local status_ok, heirline = pcall(require, "heirline")
+if status_ok then
+  local C = require "default_theme.colors"
+  local utils = require "heirline.utils"
+  local conditions = require "heirline.conditions"
+
+  local function hl_default(hlgroup, prop, default)
+    return vim.fn.hlexists(hlgroup) == 1 and utils.get_highlight(hlgroup)[prop] or default
+  end
+
+  -- local function setup_colors()
+  --   return {
+  local colors = {
+    bright_bg = utils.get_highlight("Folded").bg,
+    red = utils.get_highlight("DiagnosticError").fg,
+    dark_red = utils.get_highlight("DiffDelete").bg,
+    green = utils.get_highlight("String").fg,
+    blue = utils.get_highlight("Function").fg,
+    gray = utils.get_highlight("NonText").fg,
+    orange = utils.get_highlight("Constant").fg,
+    purple = utils.get_highlight("Statement").fg,
+    cyan = utils.get_highlight("Special").fg,
+    diag_warn = utils.get_highlight("DiagnosticWarn").fg,
+    diag_error = utils.get_highlight("DiagnosticError").fg,
+    diag_hint = utils.get_highlight("DiagnosticHint").fg,
+    diag_info = utils.get_highlight("DiagnosticInfo").fg,
+    -- git_del = utils.get_highlight("diffDeleted").fg,
+    -- git_add = utils.get_highlight("diffAdded").fg,
+    -- git_change = utils.get_highlight("diffChanged").fg,
+  }
+  -- end
+
+  require("heirline").load_colors(colors())
+  -- require("heirline").load_colors(setup_colors())
+  -- local conditions = require "heirline.conditions"
+  -- local utils = require "heirline.utils"
+  local status_opts = {
+    {
+      hl = { fg = "fg", bg = "bg" },
+      utils.surround({ "", utils.separators.left[2] }, utils.hl.mode_fg, { provider = utils.provider.str " " }),
+      {
+        condition = conditions.is_git_repo,
+        hl = { fg = "branch_fg" },
+        utils.surround(utils.separators.left, "branch_bg", {
+          { provider = utils.provider.git_branch { icon = " " }, hl = { bold = true } },
+        }),
+      },
+      {
+        condition = utils.condition.has_filetype,
+        hl = { fg = "file_fg" },
+        utils.surround(utils.separators.left, "file_bg", {
+          { provider = utils.provider.fileicon(), hl = utils.hl.filetype_color },
+          { provider = utils.provider.filetype { padding = { left = 1 } } },
+        }),
+      },
+      {
+        condition = utils.condition.git_changed,
+        hl = { fg = "git_fg" },
+        utils.surround(utils.separators.left, "git_bg", {
+          { provider = utils.provider.git_diff("added", { icon = "  " }), hl = { fg = "git_add" } },
+          { provider = utils.provider.git_diff("changed", { icon = "  " }), hl = { fg = "git_change" } },
+          { provider = utils.provider.git_diff("removed", { icon = "  " }), hl = { fg = "git_del" } },
+        }),
+      },
+      {
+        condition = conditions.has_diagnostics,
+        hl = { fg = "diagnostic_fg" },
+        utils.surround(utils.separators.left, "diagnostic_bg", {
+          { provider = utils.provider.diagnostics("ERROR", { icon = "  " }), hl = { fg = "diag_error" } },
+          { provider = utils.provider.diagnostics("WARN", { icon = "  " }), hl = { fg = "diag_warn" } },
+          { provider = utils.provider.diagnostics("INFO", { icon = "  " }), hl = { fg = "diag_info" } },
+          { provider = utils.provider.diagnostics("HINT", { icon = "  " }), hl = { fg = "diag_hint" } },
+        }),
+      },
+      { provider = utils.provider.fill() },
+      {
+        condition = conditions.lsp_attached,
+        hl = { fg = "lsp_fg" },
+        utils.surround(utils.separators.right, "lsp_bg", {
+          utils.make_flexible_component(
+            1,
+            { provider = utils.provider.lsp_progress { padding = { right = 1 } } },
+            { provider = "" }
+          ),
+          utils.make_flexible_component(
+            2,
+            { provider = utils.provider.lsp_client_names(true, 0.25, { icon = "  " }) },
+            { provider = utils.provider.str("LSP", { icon = "  " }) }
+          ),
+        }),
+      },
+      {
+        condition = utils.condition.treesitter_available,
+        hl = { fg = "ts_fg" },
+        utils.surround(utils.separators.right, "ts_bg", {
+          { provider = utils.provider.str("TS", { icon = "綠" }) },
+        }),
+      },
+      {
+        hl = { fg = "nav_fg" },
+        utils.surround(utils.separators.right, "nav_bg", {
+          { provider = utils.provider.ruler(0, 0) },
+          { provider = utils.provider.percentage { padding = { left = 1 } } },
+          { provider = utils.provider.scrollbar { padding = { left = 1 } }, hl = { fg = "scrollbar" } },
+        }),
+      },
+      utils.surround({ utils.separators.right[1], "" }, utils.hl.mode_fg, { provider = utils.provider.str " " }),
+    },
+  }
+  heirline.setup(status_opts[1])
+
+  vim.api.nvim_create_augroup("Heirline", { clear = true })
+  vim.api.nvim_create_autocmd("ColorScheme", {
+    callback = function()
+      require("heirline").reset_highlights()
+      require("heirline").load_colors(colors())
+      -- require("heirline").load_colors(setup_colors())
+    end,
+    group = "Heirline",
+  })
+end
+
+-- local statusline = {}
+-- local StatusLine = {
+--     hl = {},
+--     merged_hl = {},
+-- }
+
+-- require("heirline").setup(statusline)

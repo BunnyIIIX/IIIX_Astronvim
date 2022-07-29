@@ -2,6 +2,7 @@ return {
   ["goolord/alpha-nvim"] = { disable = true },
   ["lukas-reineke/indent-blankline.nvim"] = { disable = true },
   ["max397574/better-escape.nvim"] = { disable = true },
+  ["feline-nvim/feline.nvim"] = { disable = true },
   -- ["numToStr/Comment.nvim"] = { opt = false },
 
   --{{{=> Telescope
@@ -154,11 +155,11 @@ return {
   {
     "rose-pine/neovim",
     as = "rose-pine",
-    config = function()
-      vim.g.rose_pine_variant = "moon"
-      -- require "user.theme.rose-pine"
-      -- vim.cmd "colorscheme rose-pine"
-    end,
+    -- config = function()
+    --   vim.g.rose_pine_variant = "moon"
+    --   -- require "user.theme.rose-pine"
+    --   -- vim.cmd "colorscheme rose-pine"
+    -- end,
   },
   -- {
   --   "EdenEast/nightfox.nvim",
@@ -169,6 +170,13 @@ return {
   --}}}
 
   --{{{=> UI
+  {
+    "rebelot/heirline.nvim",
+    config = function()
+      require "user.plugins.heirline"
+    end,
+  },
+
   ["declancm/cinnamon.nvim"] = { disable = false },
   {
     "folke/zen-mode.nvim",
